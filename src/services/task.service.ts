@@ -18,7 +18,7 @@ export class TaskService {
     }
 
     async createTask(data: CreateTaskInput, userId: string): Promise<Task> {
-        const validatedData = validateData(createTaskSchema, data);
+        const validatedData = validateData(createTaskSchema, data) as CreateTaskInput;
         const task = await this.taskRepository.create(validatedData, userId);
         await this.auditHelper.logCreate('task', task.id, userId, task);
         return task;

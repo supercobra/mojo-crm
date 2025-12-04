@@ -22,7 +22,7 @@ export class CompanyService {
     }
 
     async createCompany(data: CreateCompanyInput, userId: string): Promise<Company> {
-        const validatedData = validateData(createCompanySchema, data);
+        const validatedData = validateData(createCompanySchema, data) as CreateCompanyInput;
 
         if (validatedData.customFields && Object.keys(validatedData.customFields).length > 0) {
             const customFieldDefs = await this.customFieldRepository.findByEntityType('company');

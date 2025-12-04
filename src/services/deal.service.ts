@@ -22,7 +22,7 @@ export class DealService {
     }
 
     async createDeal(data: CreateDealInput, userId: string): Promise<Deal> {
-        const validatedData = validateData(createDealSchema, data);
+        const validatedData = validateData(createDealSchema, data) as CreateDealInput;
 
         if (validatedData.customFields && Object.keys(validatedData.customFields).length > 0) {
             const customFieldDefs = await this.customFieldRepository.findByEntityType('deal');

@@ -15,7 +15,7 @@ export class CustomFieldService {
         data: CreateCustomFieldDefinitionInput,
         userId: string
     ): Promise<CustomFieldDefinition> {
-        const validatedData = validateData(createCustomFieldDefinitionSchema, data);
+        const validatedData = validateData(createCustomFieldDefinitionSchema, data) as CreateCustomFieldDefinitionInput;
         return this.customFieldRepository.create(validatedData, userId);
     }
 

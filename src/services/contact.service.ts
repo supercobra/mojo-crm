@@ -23,7 +23,7 @@ export class ContactService {
 
     async createContact(data: CreateContactInput, userId: string): Promise<Contact> {
         // Validate input
-        const validatedData = validateData(createContactSchema, data);
+        const validatedData = validateData(createContactSchema, data) as CreateContactInput;
 
         // Validate custom fields if provided
         if (validatedData.customFields && Object.keys(validatedData.customFields).length > 0) {
